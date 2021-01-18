@@ -1,0 +1,57 @@
+> show dbs
+admin           0.000GB
+config          0.000GB
+local           0.000GB
+mongo_practice  0.000GB
+test            0.000GB
+> use users
+switched to db users
+> db.users.insert({username:"GoodGuyGreg",first_name:'Good Guy',last_name:'Greg'})
+WriteResult({ "nInserted" : 1 })
+> db.users.insert({username:"ScumbagSteve",full_name:[{first:"Scumbag"},{last:"Steve"}]})
+WriteResult({ "nInserted" : 1 })
+> use posts
+switched to db posts
+> db.posts.insert({username:"GoodGuyGreg",title:'Passes out at party',body:"Wakes up early and clea house"})
+WriteResult({ "nInserted" : 1 })
+> db.posts.insert({username:"GoodGuyGreg",title:'Steals Your identity',body:"Raises your credit score"})
+WriteResult({ "nInserted" : 1 })
+> db.posts.insert({username:"GoodGuyGreg",title:'Reports bug in your code',body:"Sends you a pull request"})
+WriteResult({ "nInserted" : 1 })
+> db.posts.insert({username:"ScumbaqSteve",title:'Borrows something',body:"Sells it"})
+WriteResult({ "nInserted" : 1 })
+> db.posts.insert({username:"ScumbaqSteve",title:'Borrows everything',body:"The end"})
+WriteResult({ "nInserted" : 1 })
+> db.posts.insert({username:"ScumbaqSteve",title:'Forks your repo on github',body:"Sets to private"})
+WriteResult({ "nInserted" : 1 })
+> use comments
+switched to db comments
+> db.comments.insert({username:"GoodGuyGreg",comments:"Hope you got a good deal",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :"Borrows Something""})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:158
+> db.comments.insert({username:"GoodGuyGreg",comments:"Hope you got a good deal",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :Borrows Something"})
+WriteResult({ "nInserted" : 1 })
+> db.comments.insert({username:"GoodGuyGreg",comments:"What's your is mine",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :Borrows Everything"})
+WriteResult({ "nInserted" : 1 })
+> db.comments.insert({username:"GoodGuyGreg",comments:"Don't voilate the licensing agreement",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :Forks your repo on github"})
+WriteResult({ "nInserted" : 1 })
+> db.comments.insert({username:"ScumbagSteve",comments:"It still isn't clean",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :Passes out at party"})
+WriteResult({ "nInserted" : 1 })
+> db.comments.insert({username:"ScumbagSteve",comments:"It still isn't clean",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :"})
+WriteResult({ "nInserted" : 1 })
+> db.comments.insert({username:"ScumbagSteve",comments:"Denied your PR cause I found a hack",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :"Reports a bug in your code"})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:170
+> db.comments.insert({username:"ScumbagSteve",comments:"Denied your PR cause I found a hack",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :Reports a bug in your code})
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:197
+> db.comments.insert({username:"ScumbagSteve",comments:"Denied your PR cause I found a hack",post:"[post_obj_id] where[post_obj_id] is the ObjectId of the posts document :Reports a bug in your code"})
+WriteResult({ "nInserted" : 1 })
+>db.users.find()
+>db.posts.find()
+>db.posts.find({username:"GoodGuyGreg"})
+>db.posts.find({username:"ScumbagSteve"})
+>db.comments.find()
+>db.comments.find({name:"GoodGuyGreg"})
+>db.comments.find({name:"ScumbagSteve"})
+>db.comments.find({posts:"Reports a bug in your code"})

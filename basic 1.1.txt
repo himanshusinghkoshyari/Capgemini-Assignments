@@ -1,0 +1,153 @@
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+> use movies
+switched to db movies
+> db.drop(movies)
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+
+> use mongo_practice
+switched to db mongo_practice
+> show collections
+movies
+
+> db.movies.insert([{tile:"Fight Club",writer:"Chuck Palahniuko",Year:1999,actors:["Brad Pit","Edward Norton"]}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.movies.find()
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+> db.movies.insert([{tile:"Pulp Fiction",writer:"Quentin Tarantino",Year:2009,actors:["Brad Pit","Diane Kruger","Eli Roth"]}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.movies.insert([{tile:"The Hobbit:An Unexpected Journey ",writer:"J.R.R Tolkein",Year:2012,Franchise:"The Hobbit"}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.movies.insert([{tile:"The Hobbit:The Desolation of Smauq ",writer:"J.R.R Tolkein",Year:2013,Franchise:"The Hobbit"}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.movies.insert([{tile:"The Hobbit:The Battle of 5 armies ",writer:"J.R.R Tolkein",Year:2012,Franchise:"The Hobbit",Synopsis:"Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness"}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.movies.find()
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+{ "_id" : ObjectId("6003cc3e4fed81ca2645f32f"), "tile" : "The Hobbit:An Unexpected Journey ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cc784fed81ca2645f330"), "tile" : "The Hobbit:The Desolation of Smauq ", "writer" : "J.R.R Tolkein", "Year" : 2013, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cd1b4fed81ca2645f331"), "tile" : "The Hobbit:The Battle of 5 armies ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit", "Synopsis" : "Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness" }
+> db.movies.find({writer:"Quentin Tarantino"})
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+> db.movies.find({actors:"Brad Pitt"})
+> db.movies.find({actors:"Brad Pit"})
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+> db.movies.find({franchise:"The Hobbit"})
+> db.movies.find({Franchise:"The Hobbit"})
+{ "_id" : ObjectId("6003cc3e4fed81ca2645f32f"), "tile" : "The Hobbit:An Unexpected Journey ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cc784fed81ca2645f330"), "tile" : "The Hobbit:The Desolation of Smauq ", "writer" : "J.R.R Tolkein", "Year" : 2013, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cd1b4fed81ca2645f331"), "tile" : "The Hobbit:The Battle of 5 armies ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit", "Synopsis" : "Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness" }
+
+> db.movies.find({Year:{$lt:2000}})
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+> db.movies.find({Year:{$gte:2000}})
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+{ "_id" : ObjectId("6003cc3e4fed81ca2645f32f"), "tile" : "The Hobbit:An Unexpected Journey ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cc784fed81ca2645f330"), "tile" : "The Hobbit:The Desolation of Smauq ", "writer" : "J.R.R Tolkein", "Year" : 2013, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cd1b4fed81ca2645f331"), "tile" : "The Hobbit:The Battle of 5 armies ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit", "Synopsis" : "Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness" }
+> db.movies.find()
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+{ "_id" : ObjectId("6003cc3e4fed81ca2645f32f"), "tile" : "The Hobbit:An Unexpected Journey ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cc784fed81ca2645f330"), "tile" : "The Hobbit:The Desolation of Smauq ", "writer" : "J.R.R Tolkein", "Year" : 2013, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cd1b4fed81ca2645f331"), "tile" : "The Hobbit:The Battle of 5 armies ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit", "Synopsis" : "Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness" }
+> db.movies.update({'title':'The Hobbit :An Unexpected Journey'},{$set:{'synopsis':'A relcutant hobbit,Bilbo Baggins sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home -and the gold within it-from the dagon Smaug'}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.movies.find()
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+{ "_id" : ObjectId("6003cc3e4fed81ca2645f32f"), "tile" : "The Hobbit:An Unexpected Journey ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cc784fed81ca2645f330"), "tile" : "The Hobbit:The Desolation of Smauq ", "writer" : "J.R.R Tolkein", "Year" : 2013, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cd1b4fed81ca2645f331"), "tile" : "The Hobbit:The Battle of 5 armies ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit", "Synopsis" : "Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness" }
+> db.movies.update({'tile':'The Hobbit:An Unexpected Journey'},{$set:{'synopsis':'A relcutant hobbit,Bilbo Baggins sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home -and the gold within it-from the dagon Smaug'}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.movies.find()
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+{ "_id" : ObjectId("6003cc3e4fed81ca2645f32f"), "tile" : "The Hobbit:An Unexpected Journey ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cc784fed81ca2645f330"), "tile" : "The Hobbit:The Desolation of Smauq ", "writer" : "J.R.R Tolkein", "Year" : 2013, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cd1b4fed81ca2645f331"), "tile" : "The Hobbit:The Battle of 5 armies ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit", "Synopsis" : "Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness" }
+> db.movies.save({"_id" : ObjectId("6003cc3e4fed81ca2645f32f"),"Synopsis":"A reluctant hobbit ,bilbo baggins sets out to the lonely mountain with a spirited group of dwarvnes to reclaim their mountain home and the gold within it from the dagon Smaug"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find()
+{ "_id" : ObjectId("6002c1d64fed81ca2645f32d"), "tile" : "Fight Club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad Pit", "Edward Norton" ] }
+{ "_id" : ObjectId("6003c8a34fed81ca2645f32e"), "tile" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad Pit", "Diane Kruger", "Eli Roth" ] }
+{ "_id" : ObjectId("6003cc3e4fed81ca2645f32f"), "Synopsis" : "A reluctant hobbit ,bilbo baggins sets out to the lonely mountain with a spirited group of dwarvnes to reclaim their mountain home and the gold within it from the dagon Smaug" }
+{ "_id" : ObjectId("6003cc784fed81ca2645f330"), "tile" : "The Hobbit:The Desolation of Smauq ", "writer" : "J.R.R Tolkein", "Year" : 2013, "Franchise" : "The Hobbit" }
+{ "_id" : ObjectId("6003cd1b4fed81ca2645f331"), "tile" : "The Hobbit:The Battle of 5 armies ", "writer" : "J.R.R Tolkein", "Year" : 2012, "Franchise" : "The Hobbit", "Synopsis" : "Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of rising darkness" }
+> db.movies.save({ "_id" : ObjectId("6003cc784fed81ca2645f330"),"Synopsis":"The dwarvnes along with Bilbo baggins and gandlf the grey continue their quest to reclaim erebor their homeland from smaug bilbo baggins is in possession of a mysterious and magical ring"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.createIndex({subject:'text'})
+{
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+> db.movies.find({$text:{$search:"bilbo"}})
+> db.movies.find({$text:{$search:"Bilbo"}})
+> db.getCollection('movies').find({$text:{$search:"Bilbo"}})
+> db.movies.createIndex({name:'text',writer:'text',actor:'text',Synopsis:'text'})
+{
+        "ok" : 0,
+        "errmsg" : "Index: { v: 2, key: { _fts: \"text\", _ftsx: 1 }, name: \"name_text_writer_text_actor_text_Synopsis_text\", weights: { Synopsis: 1, actor: 1, name: 1, writer: 1 }, default_language: \"english\", language_override: \"language\", textIndexVersion: 3 } already exists with different options: { v: 2, key: { _fts: \"text\", _ftsx: 1 }, name: \"subject_text\", weights: { subject: 1 }, default_language: \"english\", language_override: \"language\", textIndexVersion: 3 }",
+        "code" : 85,
+        "codeName" : "IndexOptionsConflict"
+}
+
+> db.movies.remove({ "_id" : ObjectId("6002c1d64fed81ca2645f32d")})
