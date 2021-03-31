@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container rounded border border-primary mt-3 w-75 p-3 bg-secondary text-white">
+  <h2 class="text-center">Survey Form</h2>
+  <form action="/action_page.php">
+  	<div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+    </div>
+    <div class="form-group ">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+     <div>
+      <label for="Gender">Gender</label>
+      <p>
+        <input type="radio" name="gender" value="male" checked> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other
+      </p>
+    </div>
+    <div class="form-group ">
+      <label for="course">Course:</label>
+      <input type="course" class="form-control" id="course" placeholder="Enter course" name="course">
+    </div>
+    <div class="form-group ">
+      <label for="desc">Description:</label>
+      <textarea class="form-control" id="desc" placeholder="Enter Description"></textarea> 
+    </div>
+    <button type="submit" class="btn btn-primary ml-2">Submit</button>
+  </form>
+</div>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
